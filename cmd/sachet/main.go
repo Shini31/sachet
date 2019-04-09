@@ -33,7 +33,7 @@ import (
 
 var (
 	listenAddress = flag.String("listen-address", ":9876", "The address to listen on for HTTP requests.")
-	configFile    = flag.String("config", "config.yaml", "The configuration file")
+	configFile    = flag.String("config", "config.yaml", "The configuration file...")
 )
 
 func main() {
