@@ -53,6 +53,10 @@
   name = "gopkg.in/yaml.v2"
   version = "2.2.1"
 
+[[constraint]]
+  name: "github.com/heptiolabs/healthcheck"
+  branch: "master"
+
 [prune]
   go-tests = true
   unused-packages = true
