@@ -27,6 +27,8 @@ import (
 
 	"github.com/prometheus/alertmanager/template"
 	"github.com/prometheus/client_golang/prometheus"
+
+  "github.com/heptiolabs/healthcheck"
 )
 
 var (
@@ -113,6 +115,12 @@ func main() {
 
 		requestTotal.WithLabelValues("200", receiverConf.Provider).Inc()
 	})
+
+	health := healthcheck.NewHandler()
+  upstreamURL := "http://alertmanager-main.monitoring.svc:9093"
+	health.AddReadinessCheck(
+		"upstream-dep-http",
+		HTTPGetCheck(upstreamURL, 500*time.Millisecond))
 
 	http.Handle("/metrics", prometheus.Handler())
 
