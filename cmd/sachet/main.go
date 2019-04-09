@@ -122,8 +122,6 @@ func main() {
 		"upstream-dep-http",
 		HTTPGetCheck(upstreamURL, 500*time.Millisecond))
 
-  go http.ListenAndServe("0.0.0.0:8080", health)
-
 	http.Handle("/metrics", prometheus.Handler())
 
 	http.HandleFunc("/-/reload", func(w http.ResponseWriter, r *http.Request) {
